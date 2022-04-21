@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import audio from "../../constants/audio";
 import { audioSamples } from "../../constants/data";
 
-
 function Channel({ text, audioSound, isStop }) {
   const [channelIsOn, setChannelOn] = useState(true);
   const ChannelOnOff = () => {

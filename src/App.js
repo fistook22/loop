@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Pad from "./components/Pad";
+import audios from "./constants/audio";
+import { useState } from "react";
+import Channel from "./components/channel";
 
 function App() {
+  const [isStop, setIsStop] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {audios.map((audio, i) => {
+        return <Channel audioSound={audio} key={i} isStop={isStop} text={audio} />;
+      })}
+
+      <button>play</button>
+      <button>stop</button>
+      <button>loop</button>
     </div>
   );
 }

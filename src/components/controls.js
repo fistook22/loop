@@ -1,45 +1,31 @@
 import React, {useState, useEffect} from "react";
 import audios from "../constants/audio";
-import Channel from "./channel";
+import Channel from "./channel/channel";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import StopIcon from '@mui/icons-material/Stop';
+import LoopIcon from '@mui/icons-material/Loop';
+import { Button } from "@mui/material";
 
-function Controls({text, isStop, isPlay}) {
-    const [variableName, setVariableName] = useState(0);
+function Controls({text, isStop, isPlay, setIsStop, SetIsLoop}) {
     const [action, setAction] = useState(false)
-    const ButtonPreesed = () => {
-        if (action) {
-            setAction(true);
-        } else setAction(false)
+    const onClickPlay = () => {
+        setIsStop(false)
     };
 
-    useEffect(() => {
-        PlayAll();
-    }, [action, isPlay]);
 
-    useEffect(() => {
-        StopAll();
-    }, [action, isStop]);
-
-    const PlayAll = () => {
-        if (action) {
-            audios.play()
-        } else {
-            audios.pause()
-        }
-        
+    const OnClickLoop = () => {
+        SetIsLoop(true)
     }
 
-    const StopAll = () => {
-        if (!action) {
-            audios.pause()
-        } else {
-            audios.play()
-        }
+    const onClickStop = () => {
+        setIsStop(true)
     }
 
     return (
         <div id="controls">
-        <button onClick={() => ButtonPreesed()}>Play</button>
-        <button onClick={() => ButtonPreesed()}>Stop</button>
+        <Button variant="outlined" color="primary" startIcon={<PlayArrowIcon/>} onClick={() => onClickPlay()}></Button>
+        <Button variant="outlined" color="error" startIcon={<StopIcon/>} onClick={() => onClickStop()}></Button>
+        <Button variant="outlined" color="success" startIcon={<LoopIcon/>} onClick={() => OnClickLoop()}></Button>
         </div>
     )
 }

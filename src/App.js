@@ -1,22 +1,26 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Pad from "./components/Pad";
 import audios from "./constants/audio";
 import { useState } from "react";
-import Channel from "./components/channel";
+import Channel from "./components/channel/channel";
+import Controls from "./components/controls";
+import { audioSamples } from "./constants/data";
+import { Slider } from "@mui/material";
+
+
 
 function App() {
   const [isStop, setIsStop] = useState(true);
+  const [isLoop, setIsLoop] = useState(true);
+
 
   return (
     <div className="App">
-      {audios.map((audio, i) => {
-        return <Channel audioSound={audio} key={i} isStop={isStop} text={audio} />;
+      <Slider />
+      {audioSamples.map((audio, i) => {
+        return <Channel audioSound={audio} key={i} isStop={isStop} />;
       })}
-
-      <button>play</button>
-      <button>stop</button>
-      <button>loop</button>
+      <Controls setIsStop={setIsStop} setIsLoop={setIsLoop}/>
     </div>
   );
 }

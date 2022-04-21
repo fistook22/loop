@@ -9,7 +9,7 @@ import lead from "../assets/audio/LEAD 1.mp3";
 import uho_vocal from "../assets/audio/UUHO VOC.mp3";
 
 
-const audios = [
+const audios = {
   all_track,
   tambourine,
   b_vocal,
@@ -19,6 +19,6 @@ const audios = [
   jibrish,
   lead,
   uho_vocal,
-];
+};
 
 export default audios;

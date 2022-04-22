@@ -1,40 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Slider from "@mui/material/Slider";
+import audio from "../constants/audio";
+import { audioSamples } from "../constants/data";
 
-const Slider = ({
-  colorAfter = "#E1E1E6",
-  colorBefore = "#A5AAB2",
-  highlighted = "#EB3E3E",
-  size = 10,
-  value,
-  onChange,
-  percentage
-}) => {
-  const percent = value * 100;
-  const growTo = size + 1;
+function Slider({ setIsStop }) {
+    if(!setIsStop){
+      Slider.value = Slider.offsetLeft;
+        seekto = audio.duration * (seekslider.value / 100);
+        audio.currentTime = seekto;
+    }
+  return <Slider type="range" min="0" max="100" value="0" step="1"/>;
+}
 
-  const [hover, setHover] = useState(false);
-  const [position, setPosition] = useState(0)
-
-  useEffect(() => {
-    setPosition(percentage)
-  },[percentage])
-
-  return (
-    <Slider
-      type="range"
-      onMouseOver={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      value={value}
-      size={size}
-      colorAfter={colorAfter}
-      colorBefore={colorBefore}
-      highlighted={highlighted}
-      percent={percent}
-      growTo={growTo}
-      seeking={hover}
-      onChange={onChange}
-    />
-  );
-};
+export default Slider;

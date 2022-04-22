@@ -6,15 +6,14 @@ import StopIcon from '@mui/icons-material/Stop';
 import LoopIcon from '@mui/icons-material/Loop';
 import { Button } from "@mui/material";
 
-function Controls({text, isStop, isPlay, setIsStop, SetIsLoop}) {
-    const [action, setAction] = useState(false)
+function Controls({setIsStop, setIsLoop}) {
     const onClickPlay = () => {
         setIsStop(false)
     };
 
 
     const OnClickLoop = () => {
-        SetIsLoop(true)
+        setIsLoop(prev=>!prev)
     }
 
     const onClickStop = () => {

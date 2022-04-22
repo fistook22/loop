@@ -4,10 +4,9 @@ import { audioSamples } from '../../constants/data';
 
 
 
-const UseStyles = makeStyles(() => ({
+const useStyles = makeStyles((props) => ({
     this:{
-        backgroundColor: audioSamples.backgroundColor,
-        backgroundColorActive: audioSamples.backgroundColorActive
+        backgroundColor: props.backgroundColor,
     }
 }));
-export default UseStyles;
+export default useStyles;

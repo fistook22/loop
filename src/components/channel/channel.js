@@ -2,43 +2,55 @@ import { Switch } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import audio from "../../constants/audio";
 import { audioSamples } from "../../constants/data";
+// import useStyles from "./style";
 
-function Channel({ text, audioSound, isStop }) {
-  const [channelIsOn, setChannelOn] = useState(true);
+function Channel({ isLoop, audioSound, isStop }) {
+  const [channelIsMute, setChannelIsMute] = useState(true);
+  // const classes = useStyles({backgroundColor: audioSound.backgroundColor});
   const ChannelOnOff = () => {
-    if (channelIsOn) {
-      setChannelOn(false);
-    } else setChannelOn(true);
+    setChannelIsMute(prev=>!prev)
   };
 
   const [audio] = useState(new Audio(audioSound.audio));
 
   useEffect(() => {
     PlayAudio();
-  }, [channelIsOn, isStop]);
+    LoopAudio();
+    MuteAudio();
+  }, [channelIsMute, isStop, isLoop]);
 
-  const PlayAudio = async () => {
-    try {
-      if (!isStop && channelIsOn) {
-        await audio.play();
-        audio.loop = true;
+  const LoopAudio = () => {
+    if (isLoop) {
+      audio.loop = true;
+    } else {
+      audio.loop = false;
+    }
+  }
+
+  const MuteAudio = () => {
+      if (channelIsMute) {
         audio.volume = 1.0;
       } else {
         audio.volume = 0.0;
+      }
+  };
+
+  const PlayAudio = async () => {
+    try {
+      if (!isStop) {
+        await audio.play();
+      } else {
+        audio.pause();
+        audio.currentTime = 0;
       }
     } catch {}
   };
 
   return (
-    <div className="this">
+    <div style={{backgroundColor: audioSound.backgroundColor}}>
       <div>
         <p>{audioSound.name}</p>
-        {!channelIsOn && <Switch onClick={() => ChannelOnOff()}>Play</Switch>}
-        {channelIsOn && (
-          <Switch checked onClick={() => ChannelOnOff()}>
-            Mute
-          </Switch>
-        )}
+        <Switch checked={channelIsMute} onClick={() => ChannelOnOff()}/>
       </div>
     </div>
   );

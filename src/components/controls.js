@@ -1,6 +1,3 @@
-import React, { useState, useEffect } from "react";
-import audios from "../constants/audio";
-import Channel from "./channel/channel";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import LoopIcon from "@mui/icons-material/Loop";

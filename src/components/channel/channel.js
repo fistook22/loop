@@ -1,7 +1,5 @@
 import { Switch } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import audio from "../../constants/audio";
-import { audioSamples } from "../../constants/data";
 
 function Channel({ isLoop, audioSound, isStop, runningChannelMusic }) {
   const [channelIsMute, setChannelIsMute] = useState(true);
@@ -70,7 +68,15 @@ function Channel({ isLoop, audioSound, isStop, runningChannelMusic }) {
         <p>{audioSound.name}</p>
         <Switch checked={channelIsMute} onClick={() => ChannelOnOff()} />
       </div>
-      <img style={imgStyle} src={channelIsMute?"https://i.gifer.com/1MFu.gif":"https://cdn-icons-png.flaticon.com/128/565/565295.png"} />
+      <img
+        style={imgStyle}
+        src={
+          channelIsMute
+            ? "https://i.gifer.com/1MFu.gif"
+            : "https://cdn-icons-png.flaticon.com/128/565/565295.png"
+        }
+        alt=""
+      />
     </div>
   );
 }

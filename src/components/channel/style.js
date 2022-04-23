@@ -1,12 +1,8 @@
-import { makeStyles } from '@mui/styles';
-import { audioSamples } from '../../constants/data';
-
-
-
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((props) => ({
-    this:{
-        backgroundColor: props.backgroundColor,
-    }
+  this: {
+    backgroundColor: props.backgroundColor,
+  },
 }));
 export default useStyles;

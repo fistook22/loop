@@ -11,7 +11,7 @@ function MusicSlider({
 }) {
   
   useEffect(() => {
-    if (!isStop && runningMusicSec <= 16) {
+    if (!isStop && runningMusicSec <= 17) {
       const interval = setInterval(() => {
         console.log("This will run every second!", runningMusicSec);
         setRunningMusicSec((prev) => prev + 0.3);
@@ -30,7 +30,7 @@ function MusicSlider({
       <Slider
         value={runningMusicSec}
         min={0}
-        max={16}
+        max={17}
         onChange={(e) => onChangeDragAndDrop(e.target.value)}
       />
     </div>

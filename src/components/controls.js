@@ -20,10 +20,9 @@ function Controls({ setIsStop, setIsLoop, isStop, isLoop }) {
   };
 
   const buttonsStyle = {
-    height: "100px",
-    width: "100px",
-    borderRadius: "40%",
-    marginLeft: "47%",
+    height: "50px",
+    width: "50px",
+    marginLeft: "48%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -33,12 +32,14 @@ function Controls({ setIsStop, setIsLoop, isStop, isLoop }) {
     <div id="controls" style={buttonsStyle}>
       <Button
         variant="outlined"
+        size="large"
         style={{ backgroundColor: isStop ? "#F1F2EB" : "#ADBEC2" }}
         startIcon={<PlayArrowIcon />}
         onClick={() => onClickPlay()}
       ></Button>
       <Button
         variant="outlined"
+        size="large"
         color="error"
         style={{ backgroundColor: !isStop ? "#F1F2EB" : "#ADBEC2" }}
         startIcon={<StopIcon />}
@@ -46,6 +47,7 @@ function Controls({ setIsStop, setIsLoop, isStop, isLoop }) {
       ></Button>
       <Button
         variant="outlined"
+        size="large"
         color="success"
         style={{ backgroundColor: !isLoop ? "#F1F2EB" : "#ADBEC2" }}
         startIcon={<LoopIcon />}
